@@ -8,9 +8,29 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
 </head>
 <body>
-    <h1>My App</h1>
+    <div class="container">
+        <h1>SysInfoApp</h1>
+        <div id="output"></div>
+    </div>
     <script>
-        require('./renderer.js');
-    </script>
+            console.log(process) //display all kinds of computer information
+            let output = `
+                <h2 class="page-header">App Version Data</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Node: ${process.versions.node}</li>
+                    <li class="list-group-item">Chrome: ${process.versions.chrome}</li>
+                    <li class="list-group-item">Electron: ${process.versions.electron}</li>
+                </ul>
+
+                <h2 class="page-header">System Specs</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Systme Architecture: ${process.arch}</li>
+                    <li class="list-group-item">Processor Identifier: ${process.env.PROCESSOR_IDENTIFIER}</li>
+                    <li class="list-group-item">Printer: ${process.env.PRINTER}</li>
+                </ul>
+            `;
+            document.getElementById('output').innerHTML = output;
+        </script>
+    <script>require('./renderer.js');</script>
 </body>
 </html>

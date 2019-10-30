@@ -1,3 +1,7 @@
+/*
+ * Tutorial URL: https://www.youtube.com/watch?v=mr9Mtm_TRpw
+*/
+
 // Need these files to load the index.html file
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
@@ -9,7 +13,7 @@ let win; //global reference to the window object. if we odn't have this the wind
 // init win
 function createWindow() {
     // Create browser window
-    win = new BrowserWindow({width: 800, height: 600, icon:__dirname+'/img/sysinfo.png'});
+    win = new BrowserWindow({width: 800, height: 600, icon:__dirname+'/img/sysinfo.png', webPreferences: { nodeIntegration: true }});
 
     // Load index.html
     win.loadURL(url.format({
