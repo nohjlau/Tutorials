@@ -1,5 +1,7 @@
 # vue_crash_todolist
+![TodoApp](https://raw.githubusercontent.com/nohjlau/Tutorials/master/vue/vue_crash_todolist/src/assets/todolist.png)
 
+Todo App following this [tutorial](https://www.youtube.com/watch?v=Wy9q22isx3U).
 ## Project setup
 ```
 npm install
