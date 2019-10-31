@@ -1,5 +1,6 @@
 # SysInfoApp
-[SysInfoApp]: https://raw.githubusercontent.com/nohjlau/Tutorials/master/electron/sysinfoapp/img/sysinfoapp.png "Finished SysInfoApp"
+
+![SysInfoApp Image](https://raw.githubusercontent.com/nohjlau/Tutorials/master/electron/sysinfoapp/img/sysinfoapp.png)
 
 A quick introduction to electron that creates a simple desktop app that displays some computer information is displayed from "process".
 
