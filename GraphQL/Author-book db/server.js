@@ -28,6 +28,9 @@ const books = [
 
 const app = express();
 
+// Fields needs to return a function that returns an object instead of just an object
+// because there's circular referencing. AuthorType references BookType which references AuthorType
+// By using a function, everything can be defined before they're called
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     description: 'This represents an author of a book',
@@ -75,6 +78,14 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(BookType), //Custom GraphQL type
             description: 'List of All Books',
             resolve: () => books // If DB, query here. We'll return a list of books here.
+        },
+        author: {
+            type: AuthorType,
+            description: 'A Single Author',
+            args: {
+                id: { type: GraphQLInt }
+            },
+            resolve: (parent, args) => authors.find(author => author.id === args.id)
         },
         authors: {
             type: new GraphQLList(AuthorType),
