@@ -28,13 +28,28 @@ const books = [
 
 const app = express();
 
+const AuthorType = new GraphQLObjectType({
+    name: 'Author',
+    description: 'This represents an author of a book',
+    fields: () => ({
+        id: { type: GraphQLNonNull(GraphQLInt) },
+        name: { type: GraphQLNonNull(GraphQLString) },
+    })
+})
+
 const BookType = new GraphQLObjectType({ // Custom object type
     name: 'Book',
     description: 'This represents a book written by an author',
     fields: () => ({
         id: { type: GraphQLNonNull(GraphQLInt) },
         name: { type: GraphQLNonNull(GraphQLString) },
-        authorId: { type: GraphQLNonNull(GraphQLInt) }
+        authorId: { type: GraphQLNonNull(GraphQLInt) },
+        author: {
+            type: AuthorType,
+            resolve: (book) => { 
+                return( authors.find(author => author.id === book.authorId)
+            )}
+        }
     })
 })
 
