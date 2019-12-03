@@ -31,9 +31,9 @@ const app = express();
 const BookType = new GraphQLObjectType({ // Custom object type
     name: 'Book',
     description: 'This represents a book written by an author',
-    field: () => ({
+    fields: () => ({
         id: { type: GraphQLNonNull(GraphQLInt) },
-        name: { type: GraphQLNonNull(GraphQLString)},
+        name: { type: GraphQLNonNull(GraphQLString) },
         authorId: { type: GraphQLNonNull(GraphQLInt) }
     })
 })
@@ -45,8 +45,13 @@ const RootQueryType = new GraphQLObjectType({
         books: {
             type: new GraphQLList(BookType), //Custom GraphQL type
             description: 'List of All Books',
-            resolve: () => book // If DB, query here. We'll return a list of books here.
+            resolve: () => books // If DB, query here. We'll return a list of books here.
+        }
     })
+})
+
+const schema = new GraphQLSchema({
+    query: RootQueryType
 })
 app.use('/graphql', expressGraphQL({
     schema: schema,
