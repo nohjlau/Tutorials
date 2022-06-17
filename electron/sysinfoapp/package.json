@@ -9,6 +9,6 @@
   "author": "John Lau",
   "license": "ISC",
   "dependencies": {
-    "electron": "^7.0.0"
+    "electron": "^15.5.5"
   }
 }
